@@ -1,0 +1,17 @@
+﻿<Window x:Class="ScaleTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScaleTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="C Major表示" HorizontalAlignment="Left" Height="62" Margin="122,85,0,0" VerticalAlignment="Top" Width="183" Click="ShowCMajor" FontSize="24"/>
+        <Button Content="E Major表示" HorizontalAlignment="Left" Height="62" Margin="394,85,0,0" VerticalAlignment="Top" Width="226" Click="ShowEMajor" FontSize="24"/>
+        <Button Content="C Minor表示" HorizontalAlignment="Left" Height="62" Margin="122,173,0,0" VerticalAlignment="Top" Width="183" Click="ShowCMinor" FontSize="24"/>
+        <Button Content="E Minor表示" HorizontalAlignment="Left" Height="62" Margin="394,173,0,0" VerticalAlignment="Top" Width="226" Click="ShowEMinor" FontSize="24"/>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Height="70" Margin="111,288,0,0" VerticalAlignment="Top" Width="565" FontSize="40"/>
+
+    </Grid>
+</Window>
