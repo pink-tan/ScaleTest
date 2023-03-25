@@ -2,14 +2,9 @@
 
 namespace ScaleFactory
 {
-    /// <summary>
-    /// 音階クラス
-    /// </summary>
+    // 音階クラス
     public struct Scale
     {
-        /// <summary>
-        /// 音階
-        /// </summary>
         private ushort InternalValue { get; set; }
 
         public static readonly ushort C  =  0;
@@ -25,20 +20,10 @@ namespace ScaleFactory
         public static readonly ushort As = 10;
         public static readonly ushort B  = 11;
 
-        /// <summary>
-        /// 音階数
-        /// </summary>
-        private static readonly ushort Count = 12;
-
-        /// <summary>
-        /// ToString用リスト
-        /// </summary>
+        // ToString用リスト
         private static readonly List<string> ScaleString = new List<string>{ "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
-        /// <summary>
-        /// ushortからScaleへのキャスト
-        /// </summary>
-        /// <param name="scale">変換前</param>
+        // ushortからScaleへのキャスト
         public static implicit operator Scale(ushort scale)
         {
             return new Scale
@@ -47,60 +32,40 @@ namespace ScaleFactory
             };
         }
 
-        /// <summary>
-        /// Scaleからushortへのキャスト
-        /// </summary>
-        /// <param name="scale">変換前</param>
+        // Scaleからushortへのキャスト
         public static explicit operator ushort(Scale scale)
         {
             return scale.InternalValue;
         }
 
-        /// <summary>
-        /// 二項加算演算子のオーバーロード
-        /// </summary>
-        /// <param name="s1">左オペランド</param>
-        /// <param name="s2">右オペランド</param>
-        /// <returns>足された音階</returns>
+        // 二項加算演算子のオーバーロード
         public static Scale operator +(Scale s1, Scale s2)
         {
-            return (Scale)(((ushort)s1 + (ushort)s2) % Count);
+            return (Scale)(((ushort)s1 + (ushort)s2) % ScaleString.Count);
         }
 
-        /// <summary>
-        /// ToString
-        /// </summary>
-        /// <returns></returns>
+        // ToString
         public override string ToString()
         {
             return ScaleString[InternalValue];
         }
     }
 
-    /// <summary>
-    /// コードのEnum
-    /// </summary>
+    // コードのEnum
     public enum Code : ushort
     {
         Major = 0,
         Minor
     }
 
-    /// <summary>
-    /// スケール作るクラス
-    /// </summary>
+    // スケール作成クラス
     class ScaleFactory
     {
         private static readonly List<Scale> CMAJOR = new List<Scale> { Scale.C, Scale.D, Scale.E, Scale.F, Scale.G, Scale.A, Scale.B };
         private static readonly List<Scale> CMINOR = new List<Scale> { Scale.C, Scale.D, Scale.Ds, Scale.F, Scale.G, Scale.Gs, Scale.B };
         private static readonly List<List<Scale>> CSCALE = new List<List<Scale>> { CMAJOR, CMINOR };
 
-        /// <summary>
-        /// スケール作るメソッド
-        /// </summary>
-        /// <param name="root"></param>
-        /// <param name="code"></param>
-        /// <returns></returns>
+        // スケール作成メソッド
         public static List<Scale> MakeScales(Scale root, Code code)
         {
             // Cのスケールを取得する
@@ -116,5 +81,4 @@ namespace ScaleFactory
             return scales;
         }
     }
-
 }
